@@ -1,3 +1,4 @@
+import gzip
 import hashlib
 
 # Path to the file being verified
@@ -9,7 +10,7 @@ def generate_hash(file):
     sha256 = hashlib.sha256()
     
     # Open the file in binary read mode ('rb')
-    with open(file, 'rb') as file:
+    with gzip.open(file, 'rb') as file:
         # Read the file in 8192-byte chunks to save memory
         while chunk := file.read(8192):
             sha256.update(chunk)
